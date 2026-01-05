@@ -1,0 +1,61 @@
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    const messageDiv = document.getElementById('message');
+    
+    // Clear previous messages
+    messageDiv.style.display = 'none';
+    messageDiv.className = '';
+    
+    // Validation
+    if (!name || !email || !password || !confirmPassword) {
+        showMessage('❌ Please fill all fields!', 'error');
+        return;
+    }
+    
+    if (password.length < 6) {
+        showMessage('❌ Password must be at least 6 characters!', 'error');
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        showMessage('❌ Passwords do not match!', 'error');
+        return;
+    }
+    
+    if (!validateEmail(email)) {
+        showMessage('❌ Please enter valid email address!', 'error');
+        return;
+    }
+    
+    // Success
+    showMessage(
+        `✅ Registration Successful!<br><br>
+        <strong>Name:</strong> ${name}<br>
+        <strong>Email:</strong> ${email}<br>
+        <strong>Status:</strong> Active Account<br><br>
+        Welcome to our platform!`,
+        'success'
+    );
+    
+    // Clear form
+    document.getElementById('registerForm').reset();
+});
+
+function showMessage(text, type) {
+    const messageDiv = document.getElementById('message');
+    messageDiv.innerHTML = text;
+    messageDiv.className = type;
+    messageDiv.style.display = 'block';
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}

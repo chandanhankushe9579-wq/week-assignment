@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form - Week 01</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Student Registration</h1>
+        <form id="registerForm">
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Enter email address" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Create password" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+            </div>
+            
+            <button type="submit">Register Now</button>
+        </form>
+        
+        <div id="message"></div>
+        
+        <div class="footer">
+            <p>Week 01 Assignment - React Practice</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
